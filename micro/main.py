@@ -1,4 +1,6 @@
 import usocket
+import esp
+from machine import Pin
 
 
 def http_post(url):
@@ -14,4 +16,13 @@ def http_post(url):
         else:
             break
 
-http_post('http://127.0.0.1/click')
+
+def callback():
+    http_post('http://iot.krunchylabs.com/click')
+
+
+p2 = Pin(2, Pin.IN)
+p2.irq(trigger=Pin.IRQ_FALLING, handler=callback)
+
+while true:
+    esp.sleep_type(esp.SLEEP_LIGHT)
