@@ -5,11 +5,11 @@ import iotactions
 app = Flask(__name__)
 
 
-@app.route('/click', methods=['POST'])
+@app.route('/click', methods=['GET'])
 def singleClick():
     try:
         iotactions.sendMessage()
-        resp = Response("Message Sent", status=201, mimetype='text/plain')
+        resp = Response("Message Sent", status=200, mimetype='text/plain')
         resp.headers['server'] = ""
         return resp
     except Exception, e:
