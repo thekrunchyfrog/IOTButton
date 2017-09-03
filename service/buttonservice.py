@@ -5,7 +5,7 @@ import iotactions
 app = Flask(__name__)
 
 
-@app.route('/click', methods=['GET'])
+@app.route('/click', methods=['POST'])
 def singleClick():
     try:
         iotactions.sendMessage()
